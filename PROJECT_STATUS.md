@@ -56,6 +56,8 @@ kasugai-tsunagari-halloween/
   - 出展者向け: https://kasugai-tsunagari-halloween.guts-2025-job.chatgpt.site/exhibitor/
 - 公開サイトは1サイト内の2パスとして運用し、ソースは各ディレクトリで分離している
 - スマホ390pxで両ページの横はみ出しなし、主要画像読込、来場者向け画像領域の空白再発なしを確認
+- 来場者向け問い合わせ・SNS導線は準備中表示、出展者向けのみ申込・問い合わせ導線を掲載
+- 来場者向けスマホオープニングを短時間表示へ戻し、出展者向けInstagram QRを提供画像へ差し替え
 
 ## 情報源
 

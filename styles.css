@@ -70,6 +70,8 @@ button { font: inherit; }
 .site-header nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -4px; height: 2px; background: currentColor; transition: right .25s; }
 .site-header nav a:hover::after, .site-header nav a:focus-visible::after { right: 0; }
 .header-social { justify-self: end; border: 1px solid currentColor; border-radius: 999px; padding: 8px 14px; }
+.header-social--pending { cursor: default; opacity: .84; }
+.header-social--pending > span { color: var(--orange); font-size: .72em; letter-spacing: .02em; }
 
 .hero { min-height: max(760px,100svh); position: relative; overflow: hidden; background: var(--orange); color: white; isolation: isolate; }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -4; background: radial-gradient(circle at 25% 30%,#ff9a34 0 10%,transparent 28%), linear-gradient(135deg,#ff741f,#e95015); }
@@ -99,6 +101,8 @@ button { font: inherit; }
 
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 56px; padding: 12px 25px; border: 2px solid transparent; border-radius: 999px; text-decoration: none; font-weight: 900; line-height: 1.35; transition: transform .22s, box-shadow .22s, background .22s; }
 .button:hover, .button:focus-visible { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 10px 0 rgb(40 20 47 / 18%); }
+.button--disabled { cursor: default; pointer-events: none; opacity: .82; }
+.button--disabled:hover { transform: none; box-shadow: none; }
 .button--ink { background: var(--ink); color: white; border-color: var(--ink); }
 .button--purple { color: white; background: var(--purple); }
 .button--cream { color: var(--ink); background: var(--cream); border-color: var(--ink); }
@@ -325,8 +329,10 @@ footer small { padding-top: 20px; border-top: 1px solid rgb(255 255 255 / 20%); 
 
 @media (max-width: 560px) {
   :root { --content: calc(100% - 30px); --radius: 22px; }
-  /* スマホでは待ち時間より内容到達を優先し、全画面イントロを省略する。 */
-  .intro { display: none; }
+  /* スマホでも短いオープニングを表示し、約1秒で本文へ移る。 */
+  .intro { display: grid; transition-duration: .55s; transition-delay: .45s; }
+  .intro__mark { font-size: clamp(2rem,14vw,3.4rem); letter-spacing: -.06em; }
+  .intro__pumpkin { margin-top: 28px; }
   .site-logo span { font-size: .54rem; }
   .site-logo strong { font-size: .82rem; }
   .hero { min-height: 840px; }

@@ -12,6 +12,7 @@
 | `assets/images/vendor-collaboration.webp` | 新規生成 | キッチンカー店主、クラフト作家、福祉スタッフが寺院境内で出展計画を確認する様子。明るい自然光、信頼感、地域連携。怖い装飾、文字、ロゴなし。 |
 | `assets/images/event-market.webp` | 来場者LPから再利用 | 秋晴れの寺院境内で開かれる家族向け地域マルシェ。 |
 | `assets/images/application-qr.png` | 提供チラシから切出し | 物販・福祉関係事業所向けの申込フォームQR。直接URLは推測せずQRのみを掲載。 |
+| `assets/images/instagram-qr.png` | ユーザー提供画像 | 出展者連絡用Instagram QR。216×216pxの正方形原寸を使用。 |
 
 ## 実装
 
@@ -25,6 +26,8 @@
 
 - 390px: `innerWidth 390 / scrollWidth 375`、横スクロールなし
 - 公開URLの390px表示でヒーロー画像読込・横はみ出しなしを再確認
+- Instagram QRは自然サイズ216×216px、表示サイズ216×216px、縦横比1:1、`object-fit: contain`を確認
+- 390px / 430pxでInstagram QRカードの横はみ出しなしを確認
 - 430px: `innerWidth 430 / scrollWidth 415`、横スクロールなし
 - 1280px: `innerWidth 1280 / scrollWidth 1265`、3列カード表示
 - WebP 3点と申込QR: 読込成功
