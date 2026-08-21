@@ -50,7 +50,7 @@ kasugai-tsunagari-halloween/
 
 - 来場者向けLP: 実装・画像生成・主要QA完了。詳細は `status/festival-lp.md`
 - 出展者向けLP: 実装・画像生成・主要QA完了。詳細は `exhibitor/STATUS.md`
-- GitHub: privateリポジトリ作成前
+- GitHub: `GUTS-web/kasugai-tsunagari-halloween`（Private）の `main` へ保存済み
 
 ## 情報源
 
