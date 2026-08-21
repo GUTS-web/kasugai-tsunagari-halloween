@@ -27,6 +27,7 @@
 - 390px: `innerWidth 390 / scrollWidth 375`、横スクロールなし
 - 公開URLの390px表示でヒーロー画像読込・横はみ出しなしを再確認
 - Instagram QRは自然サイズ216×216px、表示サイズ216×216px、縦横比1:1、`object-fit: contain`を確認
+- Instagram QRは小容量のため即時読込にし、ページを開いた時点で利用可能にする
 - 390px / 430pxでInstagram QRカードの横はみ出しなしを確認
 - 430px: `innerWidth 430 / scrollWidth 415`、横スクロールなし
 - 1280px: `innerWidth 1280 / scrollWidth 1265`、3列カード表示
