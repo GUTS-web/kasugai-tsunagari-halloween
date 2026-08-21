@@ -1,4 +1,4 @@
 screenshots/*.tmp.*
 .DS_Store
 Thumbs.db
-
+/deploy-site/

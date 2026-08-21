@@ -2,6 +2,13 @@
 
 「春日井つながり祭り2026」の来場者向けLPと出展者募集LPです。
 
+## 公開URL
+
+- 来場者向け: https://kasugai-tsunagari-halloween.guts-2025-job.chatgpt.site/
+- 出展者向け: https://kasugai-tsunagari-halloween.guts-2025-job.chatgpt.site/exhibitor/
+
+GitHubリポジトリはPrivateのまま、上記の公開サイトだけを一般閲覧可能にしています。
+
 ## ローカル確認
 
 静的ファイルだけで動作します。`index.html`を開くか、任意の静的サーバーで配信してください。
@@ -28,4 +35,4 @@ python -m http.server 4173
 
 ## 注意
 
-掲載写真はイメージです。プログラム内容、予約要否、雨天時運用は公開前に最終確認してください。
+掲載写真はイメージです。プログラム内容、予約要否、雨天時運用は本公開内容の確定時に最終確認してください。

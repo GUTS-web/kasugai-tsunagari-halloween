@@ -2,6 +2,7 @@
   const root = document.documentElement;
   const body = document.body;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const compactViewport = window.matchMedia('(max-width: 900px)').matches;
 
   window.setTimeout(() => root.classList.add('is-ready'), prefersReducedMotion ? 0 : 120);
 
@@ -11,7 +12,7 @@
   window.addEventListener('scroll', setHeaderState, { passive: true });
 
   const revealTargets = document.querySelectorAll('.reveal, .reveal-image');
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  if (prefersReducedMotion || compactViewport || !('IntersectionObserver' in window)) {
     revealTargets.forEach((element) => element.classList.add('is-visible'));
   } else {
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -24,7 +25,7 @@
     revealTargets.forEach((element) => revealObserver.observe(element));
   }
 
-  if (!prefersReducedMotion) {
+  if (!prefersReducedMotion && !compactViewport) {
     window.addEventListener('pointermove', (event) => {
       root.style.setProperty('--mx', ((event.clientX / window.innerWidth) - 0.5).toFixed(3));
       root.style.setProperty('--my', ((event.clientY / window.innerHeight) - 0.5).toFixed(3));

@@ -24,6 +24,7 @@
 ## QA
 
 - 390px: `innerWidth 390 / scrollWidth 375`、横スクロールなし
+- 公開URLの390px表示でヒーロー画像読込・横はみ出しなしを再確認
 - 430px: `innerWidth 430 / scrollWidth 415`、横スクロールなし
 - 1280px: `innerWidth 1280 / scrollWidth 1265`、3列カード表示
 - WebP 3点と申込QR: 読込成功
@@ -34,7 +35,7 @@
 - ブラウザコンソール: warning / error なし
 - `node --check exhibitor/script.js`: 成功
 
-## 未確定・公開前確認
+## 未確定・本公開内容の確定時に確認
 
 - 物販・福祉用フォームの直接URL
 - キッチンカー枠の不明瞭な注記
