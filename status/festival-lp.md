@@ -32,7 +32,7 @@
 ## 公開URL
 
 - 来場者向け: https://kasugai-tsunagari-halloween.guts-2025-job.chatgpt.site/
-- 出展者向け: https://kasugai-tsunagari-halloween.guts-2025-job.chatgpt.site/exhibitor/
+- 出店者向け: https://kasugai-tsunagari-halloween.guts-2025-job.chatgpt.site/exhibitor/
 
 ## 本公開内容の確定時に確認する項目
 
