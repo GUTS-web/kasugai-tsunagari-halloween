@@ -51,10 +51,13 @@ kasugai-tsunagari-halloween/
 
 - 来場者向けLP: 実装・画像生成・主要QA完了。詳細は `status/festival-lp.md`
 - 出店者向けLP: 実装・画像生成・主要QA完了。詳細は `exhibitor/STATUS.md`
-- GitHub: `GUTS-web/kasugai-tsunagari-halloween`（Private）の `main` へ保存済み
-- 公開サイト: 一般公開済み
-  - 来場者向け: https://kasugai-tsunagari-halloween.guts-2025-job.chatgpt.site/
-  - 出店者向け: https://kasugai-tsunagari-halloween.guts-2025-job.chatgpt.site/exhibitor/
+- GitHub: `GUTS-web/kasugai-tsunagari-halloween`（Public）の `main` へ保存済み
+  - GitHub Pages を有効化して公開（Settings > Pages / source: `main` ブランチのルート）
+- 公開サイト: GitHub Pages で一般公開済み（URL・QRコードでのみ到達、検索は `noindex` + `robots.txt` で回避）
+  - 来場者向け: https://guts-web.github.io/kasugai-tsunagari-halloween/
+  - 出店者向け: https://guts-web.github.io/kasugai-tsunagari-halloween/exhibitor/
+  - QRコード: `assets/qr/kasugai-tsunagari-2026-visitor.(png|svg)` / `assets/qr/kasugai-tsunagari-2026-exhibitor.(png|svg)`
+  - 旧 `*.chatgpt.site` の URL はプレビュー用で恒久性がないため使用しない
 - 公開サイトは1サイト内の2パスとして運用し、ソースは各ディレクトリで分離している
 - スマホ390pxで両ページの横はみ出しなし、主要画像読込、来場者向け画像領域の空白再発なしを確認
 - 来場者向け問い合わせ・SNS導線は未接続、出店者向けのみ申込・問い合わせ導線を掲載
