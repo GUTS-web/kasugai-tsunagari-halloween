@@ -715,6 +715,50 @@ button {
   text-underline-offset: 5px;
 }
 
+.card-link--disabled {
+  margin-top: 25px;
+  color: #8b8291;
+  font-weight: 900;
+  text-decoration: line-through;
+}
+
+.closed-badge {
+  align-self: flex-start;
+  margin: 0 0 14px;
+  padding: 6px 18px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+.category-card .closed-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  margin: 0;
+  z-index: 1;
+}
+
+.apply-card .closed-badge {
+  align-self: center;
+  margin-top: -8px;
+}
+
+.apply-card--dm .closed-badge {
+  background: #fff;
+  color: var(--ink);
+}
+
+.category-card.is-closed h3,
+.category-card.is-closed .category-card__icon,
+.category-card.is-closed>p:not([class]),
+.category-card.is-closed .price {
+  opacity: .55;
+}
+
 .collaboration {
   display: grid;
   grid-template-columns: 1.1fr .9fr;
