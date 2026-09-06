@@ -11,6 +11,7 @@
   --teal: #15898a;
   --pink: #d84471;
   --yellow: #ffd84a;
+  --closed: #c62828;
   --line: rgba(32, 23, 46, .16);
   --shadow: 0 22px 60px rgba(42, 24, 22, .14);
   --radius: 28px;
@@ -717,46 +718,65 @@ button {
 
 .card-link--disabled {
   margin-top: 25px;
-  color: #8b8291;
+  color: var(--closed);
   font-weight: 900;
-  text-decoration: line-through;
 }
 
 .closed-badge {
   align-self: flex-start;
-  margin: 0 0 14px;
-  padding: 6px 18px;
-  background: var(--ink);
+  margin: 0 0 16px;
+  padding: 9px 22px;
+  background: var(--closed);
   color: #fff;
+  border: 2px solid #fff;
   border-radius: 999px;
-  font-size: .78rem;
+  font-size: .95rem;
   font-weight: 900;
-  letter-spacing: .1em;
+  letter-spacing: .14em;
+  box-shadow: 0 6px 18px rgba(183, 24, 24, .38);
 }
 
 .category-card .closed-badge {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: -14px;
+  left: 18px;
   margin: 0;
-  z-index: 1;
+  z-index: 2;
+  transform: rotate(-4deg);
+  font-size: 1rem;
+  padding: 10px 24px;
 }
 
 .apply-card .closed-badge {
   align-self: center;
-  margin-top: -8px;
+  margin: -6px 0 4px;
+  font-size: 1.15rem;
+  padding: 11px 30px;
+  transform: rotate(-2deg);
 }
 
 .apply-card--dm .closed-badge {
-  background: #fff;
-  color: var(--ink);
+  border-color: var(--yellow);
+}
+
+.category-card.is-closed {
+  border-top-color: var(--closed);
+}
+
+.category-card.is-closed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: rgba(255, 248, 233, .35);
+  pointer-events: none;
 }
 
 .category-card.is-closed h3,
 .category-card.is-closed .category-card__icon,
 .category-card.is-closed>p:not([class]),
 .category-card.is-closed .price {
-  opacity: .55;
+  opacity: .5;
 }
 
 .collaboration {
