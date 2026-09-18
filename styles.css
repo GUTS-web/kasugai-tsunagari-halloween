@@ -1642,7 +1642,7 @@ footer small {
   display: inline-block;
   /* 幅を内容に合わせる */
   width: auto;
-  margin: 16px auto 16px;
+  margin: 10px auto 16px;
   text-align: center;
   font-size: 2rem;
 }
