@@ -1386,7 +1386,7 @@ footer div {
   flex-direction: column;
 }
 
-footer div:nth-child(2) {
+footer div:nth-child(3) {
   align-items: flex-end;
   text-align: right;
 }
@@ -1411,6 +1411,57 @@ footer small {
 footer small {
   padding-top: 20px;
   border-top: 1px solid rgb(255 255 255 / 20%);
+}
+
+footer .footer-rules {
+  grid-column: 1/-1;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 26px 28px;
+  border: 2px solid var(--yellow);
+  border-radius: var(--radius);
+  background: rgb(255 255 255 / 6%);
+}
+
+footer .footer-rules__label {
+  color: var(--yellow);
+  font-size: .85rem;
+  font-weight: 800;
+}
+
+footer .footer-rules__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--yellow);
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease;
+}
+
+footer .footer-rules__link span {
+  padding: 2px 10px;
+  border-radius: 999px;
+  color: white;
+  background: var(--ink);
+  font-size: .72rem;
+  letter-spacing: .08em;
+}
+
+footer .footer-rules__link:hover,
+footer .footer-rules__link:focus-visible {
+  background: #ffd25a;
+  transform: translateY(-2px);
+}
+
+footer .footer-rules__note {
+  color: rgb(255 255 255 / 80%);
+  font-size: .8rem;
 }
 
 .floating-ticket {
@@ -2086,7 +2137,7 @@ footer small {
     grid-template-columns: 1fr;
   }
 
-  footer div:nth-child(2) {
+  footer div:nth-child(3) {
     align-items: flex-start;
     text-align: left;
   }
@@ -2094,6 +2145,16 @@ footer small {
   footer p,
   footer small {
     grid-column: 1;
+  }
+
+  footer .footer-rules {
+    grid-column: 1;
+    padding: 22px 18px;
+  }
+
+  footer .footer-rules__link {
+    padding: 14px 20px;
+    font-size: .95rem;
   }
 
   .floating-ticket {
