@@ -1413,6 +1413,17 @@ footer small {
   border-top: 1px solid rgb(255 255 255 / 20%);
 }
 
+footer .footer-exhibitor a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+footer .footer-exhibitor a:hover,
+footer .footer-exhibitor a:focus-visible {
+  color: white;
+}
+
 footer .footer-rules {
   grid-column: 1/-1;
   align-items: flex-start;
