@@ -2225,24 +2225,25 @@ footer .footer-rules__note {
   z-index: 5;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 90px max(24px, calc((100vw - 1180px) / 2)) 18px;
+  gap: 18px;
+  overflow: hidden;
+  padding: 88px max(20px, calc((100vw - 1180px) / 2)) 16px;
   color: white;
-  background: var(--ink);
+  background:
+    radial-gradient(circle at 92% 120%, rgb(255 107 26 / 55%), transparent 42%),
+    linear-gradient(100deg, #24102f 0%, #45195f 55%, #6a2f9c 100%);
   text-decoration: none;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
-.parking-alert__icon {
+.parking-alert__thumb {
   flex: none;
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border: 3px solid white;
-  border-radius: 10px;
-  background: #1f5fbf;
-  font: 900 1.6rem/1 Arial, sans-serif;
+  width: 104px;
+  height: 70px;
+  border: 3px solid var(--yellow);
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 4px 4px 0 rgb(0 0 0 / 35%);
 }
 
 .parking-alert__body {
@@ -2250,39 +2251,74 @@ footer .footer-rules__note {
   min-width: 0;
 }
 
-.parking-alert__body strong {
-  display: block;
-  color: var(--yellow);
-  font-size: 1.05rem;
+.parking-alert__tag {
+  display: inline-block;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--yellow);
+  font: 900 .6rem/1.8 Arial, sans-serif;
+  letter-spacing: .2em;
 }
 
-.parking-alert__body span {
-  font-size: .86rem;
+.parking-alert__body strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 1.12rem;
+  letter-spacing: .02em;
+}
+
+.parking-alert__body > span:last-child {
+  display: block;
+  color: rgb(255 255 255 / 82%);
+  font-size: .8rem;
 }
 
 .parking-alert__more {
   flex: none;
-  margin-left: auto;
-  padding: 8px 18px;
-  border: 2px solid var(--yellow);
+  padding: 10px 20px;
+  border: 2px solid var(--ink);
   border-radius: 999px;
-  color: var(--yellow);
-  font-size: .82rem;
+  color: var(--ink);
+  background: var(--yellow);
+  box-shadow: 4px 4px 0 rgb(0 0 0 / 35%);
+  font-size: .85rem;
   font-weight: 900;
   white-space: nowrap;
-  transition: background .2s, color .2s;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.parking-alert__more i {
+  display: inline-block;
+  margin-left: 6px;
+  font-style: normal;
+  animation: parking-bob 1.4s ease-in-out infinite;
 }
 
 .parking-alert:hover .parking-alert__more,
 .parking-alert:focus-visible .parking-alert__more {
-  color: var(--ink);
-  background: var(--yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgb(0 0 0 / 35%);
+}
+
+@keyframes parking-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
 }
 
 /* ===== 駐車場のご案内（本体） ===== */
 .parking {
+  position: relative;
   padding: clamp(70px, 9vw, 120px) 0;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: radial-gradient(rgb(113 55 168 / 13%) 1.6px, transparent 1.8px);
+  background-size: 22px 22px;
   scroll-margin-top: 70px;
 }
 
@@ -2293,54 +2329,107 @@ footer .footer-rules__note {
 }
 
 .timetable__inner {
-  width: min(880px, calc(100vw - 48px));
+  width: min(900px, calc(100vw - 40px));
+}
+
+.parking__head {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
 }
 
 .parking h2,
 .timetable h2 {
   margin: 0 0 18px;
-  font-size: clamp(2rem, 4.4vw, 3.6rem);
-  line-height: 1.15;
-  letter-spacing: -.04em;
+  font-size: clamp(2.3rem, 5vw, 4.4rem);
+  line-height: 1.1;
+  letter-spacing: -.05em;
 }
 
 .parking__lead,
 .timetable__lead {
-  max-width: 760px;
+  max-width: 640px;
   margin: 0;
+}
+
+.parking__visual {
+  margin: 0;
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  border-radius: 28px;
+  box-shadow: 10px 10px 0 var(--orange);
+  transform: rotate(1.5deg);
+}
+
+.parking__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .parking-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin: 34px 0 28px;
+  gap: 22px;
+  margin: clamp(36px, 5vw, 56px) 0 28px;
 }
 
 .parking-card {
+  --accent: var(--orange);
   display: flex;
   flex-direction: column;
-  padding: 22px;
-  border: 2px solid var(--ink);
-  border-radius: 22px;
+  padding: 24px 22px 22px;
+  border: 3px solid var(--ink);
+  border-radius: 24px;
   background: white;
-  box-shadow: 6px 6px 0 var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.parking-card:nth-child(2) {
+  --accent: var(--purple);
+}
+
+.parking-card:nth-child(3) {
+  --accent: var(--teal);
+}
+
+.parking-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 var(--ink);
 }
 
 .parking-card__no {
-  align-self: flex-start;
-  margin: 0 0 10px;
-  padding: 2px 14px;
-  border-radius: 999px;
-  color: white;
-  background: var(--purple);
-  font-size: .8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: .9rem;
   font-weight: 900;
+}
+
+.parking-card__num {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  color: white;
+  background: var(--accent);
+  box-shadow: 3px 3px 0 var(--ink);
+  font: 900 1.3rem/1 Arial, sans-serif;
+}
+
+.parking-card__num--bike {
+  font-size: .95rem;
 }
 
 .parking-card h3 {
   margin: 0 0 12px;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   line-height: 1.4;
 }
 
@@ -2351,20 +2440,20 @@ footer .footer-rules__note {
 }
 
 .parking-card dl {
-  margin: 0 0 16px;
+  margin: 0 0 18px;
 }
 
 .parking-card dl div {
   display: grid;
   grid-template-columns: 4.6em 1fr;
   gap: 6px;
-  padding: 6px 0;
-  border-top: 1px dashed rgb(40 20 47 / 25%);
-  font-size: .86rem;
+  padding: 7px 0;
+  border-top: 1px dashed rgb(40 20 47 / 22%);
+  font-size: .87rem;
 }
 
 .parking-card dt {
-  color: var(--purple);
+  color: var(--accent);
   font-weight: 900;
 }
 
@@ -2375,39 +2464,70 @@ footer .footer-rules__note {
 .parking-card__map {
   margin-top: auto;
   padding: 10px 16px;
+  border: 2px solid var(--ink);
   border-radius: 999px;
   color: white;
-  background: var(--orange);
+  background: var(--accent);
+  box-shadow: 3px 3px 0 var(--ink);
   font-size: .85rem;
   font-weight: 900;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
+  transition: transform .2s, box-shadow .2s;
 }
 
 .parking-card__map:hover,
 .parking-card__map:focus-visible {
-  background: #e85a0c;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
 }
 
 .parking-card--bike {
+  --accent: var(--green);
   grid-column: 1 / -1;
-  background: var(--cream);
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  background: #f4fae9;
+}
+
+.parking-card--bike .parking-card__no,
+.parking-card--bike h3 {
+  margin: 0;
+  flex: none;
 }
 
 .parking-card--bike p {
   margin: 0;
-  font-size: .9rem;
+  font-size: .92rem;
 }
 
 .parking__notes {
   margin: 0;
-  padding-left: 1.2em;
+  padding: 22px 26px;
+  list-style: none;
+  border: 2px dashed var(--ink);
+  border-radius: 20px;
+  background: white;
   font-size: .9rem;
 }
 
 .parking__notes li {
-  margin: .3em 0;
+  position: relative;
+  margin: .35em 0;
+  padding-left: 1.4em;
+}
+
+.parking__notes li::before {
+  content: "";
+  position: absolute;
+  top: .62em;
+  left: 0;
+  width: .55em;
+  height: .55em;
+  border-radius: 50%;
+  background: var(--orange);
 }
 
 .parking__notes strong {
@@ -2416,29 +2536,77 @@ footer .footer-rules__note {
 
 /* ===== 当日のタイムスケジュール ===== */
 .timetable {
-  padding: clamp(70px, 9vw, 120px) 0;
-  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(80px, 10vw, 130px) 0;
+  color: white;
+  background:
+    radial-gradient(circle at 8% 12%, rgb(255 107 26 / 28%), transparent 38%),
+    radial-gradient(circle at 92% 88%, rgb(113 55 168 / 55%), transparent 45%),
+    var(--ink);
   scroll-margin-top: 70px;
 }
 
+.timetable .section-label {
+  color: var(--yellow);
+}
+
+.timetable__lead {
+  color: rgb(255 255 255 / 78%);
+}
+
 .timetable__list {
-  margin: 28px 0 0;
+  position: relative;
+  margin: 40px 0 0;
   padding: 0;
   list-style: none;
-  border-top: 2px solid var(--ink);
+}
+
+.timetable__list::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 7.45em;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(var(--orange), var(--yellow), var(--purple));
 }
 
 .timetable__list li {
+  position: relative;
   display: grid;
-  grid-template-columns: 9.5em 1fr;
-  gap: 16px;
-  padding: 14px 4px;
-  border-bottom: 1px solid rgb(40 20 47 / 20%);
+  grid-template-columns: 6.4em 1fr;
+  gap: 32px;
+  padding: 8px 0;
+}
+
+.timetable__list li::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: calc(7.45em - 6px);
+  width: 15px;
+  height: 15px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 0 3px var(--orange);
 }
 
 .timetable__list time {
-  color: var(--orange);
-  font-weight: 900;
+  padding-top: 14px;
+  color: var(--yellow);
+  font: 900 .92rem/1.4 Arial, sans-serif;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.timetable__list li > div {
+  padding: 12px 18px;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 8%);
 }
 
 .timetable__list strong {
@@ -2446,32 +2614,28 @@ footer .footer-rules__note {
 }
 
 .timetable__indoor {
-  display: block;
-  margin-top: 2px;
-  color: var(--purple);
-  font-size: .82rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  color: rgb(255 255 255 / 85%);
+  font-size: .84rem;
+}
+
+.timetable__indoor b {
+  padding: 0 10px;
+  border-radius: 999px;
+  color: white;
+  background: var(--teal);
+  font-size: .72rem;
+  line-height: 1.9;
 }
 
 .timetable__note {
-  margin: 14px 0 0;
-  color: #6b5a70;
+  margin: 18px 0 0;
+  color: rgb(255 255 255 / 60%);
   font-size: .78rem;
-}
-
-/* ===== 受付終了のお知らせ ===== */
-.closed-notice {
-  width: min(880px, calc(100vw - 48px));
-  margin: 28px auto;
-  padding: 28px 20px;
-  border: 3px solid var(--ink);
-  border-radius: 22px;
-  color: var(--purple);
-  background: white;
-  box-shadow: 6px 6px 0 var(--ink);
-  font-size: clamp(1.1rem, 3vw, 1.6rem);
-  font-weight: 900;
-  line-height: 1.6;
-  text-align: center;
 }
 
 .event-ticket li a {
@@ -2479,6 +2643,15 @@ footer .footer-rules__note {
 }
 
 @media (max-width: 900px) {
+  .parking__head {
+    grid-template-columns: 1fr;
+  }
+
+  .parking__visual {
+    max-width: 600px;
+    transform: none;
+  }
+
   .parking-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2488,12 +2661,16 @@ footer .footer-rules__note {
   .parking-alert {
     flex-wrap: wrap;
     gap: 12px;
-    padding: 84px 16px 16px;
+    padding: 80px 16px 16px;
+  }
+
+  .parking-alert__thumb {
+    width: 76px;
+    height: 52px;
   }
 
   .parking-alert__more {
     width: 100%;
-    margin-left: 0;
     text-align: center;
   }
 
@@ -2501,8 +2678,35 @@ footer .footer-rules__note {
     grid-template-columns: 1fr;
   }
 
+  .parking-card--bike {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .timetable__list::before {
+    left: 9px;
+  }
+
   .timetable__list li {
     grid-template-columns: 1fr;
-    gap: 2px;
+    gap: 6px;
+    padding-left: 34px;
+  }
+
+  .timetable__list li::before {
+    top: 12px;
+    left: 3px;
+  }
+
+  .timetable__list time {
+    padding-top: 6px;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parking-alert__more i {
+    animation: none;
   }
 }

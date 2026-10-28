@@ -14,7 +14,7 @@
     content="https://guts-web.github.io/kasugai-tsunagari-halloween/assets/images/hero-festival.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>春日井つながり祭り｜楽しく おいしく 学べる ハロウィーン</title>
-  <link rel="stylesheet" href="styles.css?v=20261028">
+  <link rel="stylesheet" href="styles.css?v=20261028b">
   <meta name="google-site-verification" content="yEESfwl0iUHl4pGOeR_BAQrC1uNWLb2QLtQHwEUidFo" />
 </head>
 
@@ -50,12 +50,13 @@
 
   <main id="main">
     <a class="parking-alert" href="#parking">
-      <span class="parking-alert__icon" aria-hidden="true">P</span>
+      <img class="parking-alert__thumb" src="assets/images/parking-illust.webp" width="1536" height="1024" alt="">
       <span class="parking-alert__body">
-        <strong>お車でお越しの方へ｜駐車場のご案内</strong>
-        <span>臨時駐車場（第1：日医工 愛知工場／第2：サムス 春日井工場／第3：王子製紙）をご利用ください。</span>
+        <span class="parking-alert__tag">PARKING</span>
+        <strong>お車の方は臨時駐車場へ</strong>
+        <span>第1 日医工 愛知工場／第2 サムス 春日井工場／第3 王子製紙</span>
       </span>
-      <span class="parking-alert__more">場所・利用時間を見る <span aria-hidden="true">↓</span></span>
+      <span class="parking-alert__more">場所・時間を見る<i aria-hidden="true">↓</i></span>
     </a>
 
     <section class="hero" id="top" aria-labelledby="hero-title">
@@ -113,12 +114,19 @@
 
     <section class="parking" id="parking" aria-labelledby="parking-title">
       <div class="parking__inner">
-        <p class="section-label">PARKING</p>
-        <h2 id="parking-title">駐車場のご案内</h2>
-        <p class="parking__lead">お車でお越しの方は、近くの企業さまにお借りしている臨時駐車場をご利用ください。台数に限りがありますので、乗り合わせや公共交通機関のご利用にご協力ください。</p>
+        <div class="parking__head">
+          <div>
+            <p class="section-label">PARKING</p>
+            <h2 id="parking-title">駐車場の<br>ご案内</h2>
+            <p class="parking__lead">お車でお越しの方は、近くの企業さまにお借りしている臨時駐車場をご利用ください。台数に限りがありますので、乗り合わせや公共交通機関のご利用にご協力ください。</p>
+          </div>
+          <figure class="parking__visual">
+            <img src="assets/images/parking-illust.webp" width="1536" height="1024" loading="lazy" alt="かぼちゃの車がお寺のハロウィン祭りの臨時駐車場へ向かうイラスト">
+          </figure>
+        </div>
         <div class="parking-grid">
           <article class="parking-card">
-            <p class="parking-card__no">第1駐車場</p>
+            <p class="parking-card__no"><span class="parking-card__num">1</span>第1駐車場</p>
             <h3>日医工株式会社 愛知工場</h3>
             <dl>
               <div><dt>台数</dt><dd>70台</dd></div>
@@ -128,7 +136,7 @@
             <a class="parking-card__map" href="https://maps.app.goo.gl/eVy2dCDwtDo2zp2o7" target="_blank" rel="noopener noreferrer">Googleマップで開く <span aria-hidden="true">↗</span></a>
           </article>
           <article class="parking-card">
-            <p class="parking-card__no">第2駐車場</p>
+            <p class="parking-card__no"><span class="parking-card__num">2</span>第2駐車場</p>
             <h3>株式会社サムス 春日井工場</h3>
             <dl>
               <div><dt>台数</dt><dd>35台</dd></div>
@@ -138,7 +146,7 @@
             <a class="parking-card__map" href="https://maps.app.goo.gl/aypQTWQjdBcjvMfA6" target="_blank" rel="noopener noreferrer">Googleマップで開く <span aria-hidden="true">↗</span></a>
           </article>
           <article class="parking-card">
-            <p class="parking-card__no">第3駐車場</p>
+            <p class="parking-card__no"><span class="parking-card__num">3</span>第3駐車場</p>
             <h3>王子製紙<small>バラ園臨時駐車場・王子クラブ</small></h3>
             <dl>
               <div><dt>台数</dt><dd>42台（バラ園臨時駐車場30台・王子クラブ12台）</dd></div>
@@ -148,7 +156,7 @@
             <a class="parking-card__map" href="https://maps.app.goo.gl/4adqdtQip3TWz3Ew5" target="_blank" rel="noopener noreferrer">Googleマップで開く <span aria-hidden="true">↗</span></a>
           </article>
           <article class="parking-card parking-card--bike">
-            <p class="parking-card__no">自転車</p>
+            <p class="parking-card__no"><span class="parking-card__num parking-card__num--bike">自</span>自転車</p>
             <h3>駐輪場</h3>
             <p>泰岳寺の山門付近・東側に駐輪場があります。境内への乗り入れはできません。</p>
           </article>
@@ -241,11 +249,11 @@
         <ol class="timetable__list">
           <li><time>10:00〜10:20</time><div><strong>オープニング・開会式</strong></div></li>
           <li><time>10:20〜10:50</time><div><strong>オープニングアクト（マハロフラサークル ポーアコルウクレレチーム）</strong></div></li>
-          <li><time>10:50〜11:30</time><div><strong>一般出演（和太鼓教室勝音-SHOTO-、かにらっこ、ピリナ）</strong><span class="timetable__indoor">屋内（講話室）：お坊さんコラボ対談</span></div></li>
-          <li><time>11:30〜12:00</time><div><strong>ハロウィン仮装ランウェイ</strong><span class="timetable__indoor">屋内（講話室）：お坊さんコラボ対談</span></div></li>
+          <li><time>10:50〜11:30</time><div><strong>一般出演（和太鼓教室勝音-SHOTO-、かにらっこ、ピリナ）</strong><span class="timetable__indoor"><b>屋内・講話室</b>お坊さんコラボ対談</span></div></li>
+          <li><time>11:30〜12:00</time><div><strong>ハロウィン仮装ランウェイ</strong><span class="timetable__indoor"><b>屋内・講話室</b>お坊さんコラボ対談</span></div></li>
           <li><time>12:00〜12:30</time><div><strong>ハロウィンカラオケ大会</strong></div></li>
           <li><time>12:30〜13:00</time><div><strong>休憩</strong></div></li>
-          <li><time>13:00〜13:30</time><div><strong>一般出演（ゆるーり音楽サロン、名古屋よいとこ隊、オカリナ吹きのキキファミリー）</strong><span class="timetable__indoor">屋内（講話室）：食育講話</span></div></li>
+          <li><time>13:00〜13:30</time><div><strong>一般出演（ゆるーり音楽サロン、名古屋よいとこ隊、オカリナ吹きのキキファミリー）</strong><span class="timetable__indoor"><b>屋内・講話室</b>食育講話</span></div></li>
           <li><time>13:40〜14:30</time><div><strong>一般出演（ソシアル組、TAISHI、しばみん＆ゆーちゃん、御握り団。）</strong></div></li>
           <li><time>14:30〜14:50</time><div><strong>特別出演：シンガーソングライター 山口大貴さん</strong></div></li>
           <li><time>15:00〜15:30</time><div><strong>春日丘高校インターアクトクラブ アイドルステージ</strong></div></li>
@@ -332,7 +340,7 @@
       <!-- <a class="banner-cta" href="https://forms.gle/kK4tyzxqjLSyAJaE6">詳細・申込はこちら！！</a> -->
     </section>
     <section class="banner-section">
-      <p class="closed-notice">ボランティアの受付は<br class="mobile-only">終了しました。<br>ありがとうございました。</p>
+      <img class="banner" src="assets/images/volunteer-closed-banner.webp" loading="lazy" alt="ボランティアスタッフの受付は終了しました。たくさんのご応募ありがとうございました。">
     </section>
 
     <section class="faq section" aria-labelledby="faq-title">
