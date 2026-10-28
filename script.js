@@ -130,4 +130,139 @@
       });
     });
   });
+
+  // Instagramの投稿：横に流れ続ける（マウスを乗せる・指で動かすと止まる）
+  const igRail = document.querySelector('[data-ig-rail]');
+  if (igRail) {
+    const track = igRail.querySelector('[data-ig-track]');
+    const originals = [...track.children];
+    const toggle = document.querySelector('[data-ig-toggle]');
+    const canHover = window.matchMedia('(hover: hover)').matches;
+    const speed = 34;
+    let pos = 0;
+    let last = 0;
+    let holdUntil = 0;
+    let userPaused = prefersReducedMotion;
+    let tween = null;
+    let running = false;
+    let embedsRequested = false;
+
+    const loopWidth = () => track.children[originals.length].offsetLeft - originals[0].offsetLeft;
+    const cardStep = () => originals[1].offsetLeft - originals[0].offsetLeft;
+
+    // 端まで来ても切れ目なく流れるよう、画面の幅に足りるだけ投稿を複製する
+    const fillClones = () => {
+      let added = false;
+      while (track.children.length < originals.length * 2
+        || (loopWidth() > 0 && track.children.length < originals.length * 6
+          && igRail.scrollWidth - igRail.clientWidth < loopWidth() + 8)) {
+        originals.forEach((item) => {
+          const clone = item.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          track.append(clone);
+        });
+        added = true;
+      }
+      if (added && embedsRequested) window.instgrm?.Embeds.process();
+    };
+    new MutationObserver(() => {
+      track.querySelectorAll('[aria-hidden="true"] a, [aria-hidden="true"] iframe')
+        .forEach((element) => element.setAttribute('tabindex', '-1'));
+    }).observe(track, { childList: true, subtree: true });
+    fillClones();
+
+    const setPos = (value) => {
+      const width = loopWidth();
+      pos = ((value % width) + width) % width;
+      igRail.scrollLeft = pos;
+    };
+    const hold = (ms) => {
+      holdUntil = Math.max(holdUntil, performance.now() + ms);
+    };
+
+    const tick = (now) => {
+      const delta = last ? Math.min(now - last, 64) : 0;
+      last = now;
+      if (tween) {
+        const t = Math.min(1, (now - tween.start) / tween.duration);
+        setPos(tween.from + (tween.to - tween.from) * (1 - Math.pow(1 - t, 3)));
+        if (t === 1) tween = null;
+      } else if (!userPaused && now > holdUntil && !(canHover && igRail.matches(':hover'))) {
+        setPos(pos + speed * delta / 1000);
+      }
+      if (running) requestAnimationFrame(tick);
+    };
+    const start = () => {
+      if (running) return;
+      running = true;
+      last = 0;
+      requestAnimationFrame(tick);
+    };
+
+    const loadEmbeds = () => {
+      if (embedsRequested) return;
+      embedsRequested = true;
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+        return;
+      }
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.instagram.com/embed.js';
+      body.append(script);
+    };
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) loadEmbeds();
+      }, { rootMargin: '800px 0px' }).observe(igRail);
+      new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) start();
+        else running = false;
+      }).observe(igRail);
+    } else {
+      loadEmbeds();
+      start();
+    }
+
+    // 指やトラックパッドで動かしたときは、その位置から少し待って再開する
+    igRail.addEventListener('scroll', () => {
+      if (Math.abs(igRail.scrollLeft - pos) <= 2) return;
+      pos = igRail.scrollLeft;
+      tween = null;
+      hold(4000);
+    }, { passive: true });
+    igRail.addEventListener('pointerdown', () => hold(4000));
+    igRail.addEventListener('focusin', () => {
+      holdUntil = Infinity;
+    });
+    igRail.addEventListener('focusout', () => {
+      holdUntil = 0;
+      hold(2000);
+    });
+
+    const nudge = (direction) => {
+      tween = { from: pos, to: pos + direction * cardStep(), start: performance.now(), duration: 520 };
+      hold(5000);
+      start();
+    };
+    document.querySelector('[data-ig-prev]')?.addEventListener('click', () => nudge(-1));
+    document.querySelector('[data-ig-next]')?.addEventListener('click', () => nudge(1));
+
+    const renderToggle = () => {
+      toggle.setAttribute('aria-pressed', String(userPaused));
+      toggle.textContent = userPaused ? '再生' : '一時停止';
+    };
+    toggle?.addEventListener('click', () => {
+      userPaused = !userPaused;
+      holdUntil = 0;
+      renderToggle();
+    });
+    if (toggle) renderToggle();
+
+    window.addEventListener('resize', () => {
+      fillClones();
+      setPos(pos);
+    }, { passive: true });
+  }
 })();
