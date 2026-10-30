@@ -3062,3 +3062,8 @@ footer .footer-rules__note {
   margin-top: auto;
   padding-top: 22px;
 }
+
+/* 縦長の図（田中葬具の航空写真） */
+.parking-card__plan--tall img {
+  height: 440px;
+}
