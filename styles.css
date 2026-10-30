@@ -3049,3 +3049,16 @@ footer .footer-rules__note {
     width: min(340px, 84vw);
   }
 }
+
+/* ===== 体裁の調整 ===== */
+/* 体験カード：説明文と下の英字が重ならないよう、英字を流れの最後に置く */
+.program-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.program-card small {
+  position: static;
+  margin-top: auto;
+  padding-top: 22px;
+}
